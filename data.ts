@@ -1,10 +1,5 @@
 
-type DBStudent = {
-    email: string,
-    password: string,
-    role: "Student" | "Profesor"
-  }
-export const users: DBStudent[] = [
+export const users = [
     {email: "alejo@digitalhouse.com", password: "1234", role:"Profesor"},
     {email: "tomi@digitalhouse.com", password: "2345", role:"Profesor"},
     {email: "alexis@digitalhouse.com", password: "hola", role:"Profesor"},

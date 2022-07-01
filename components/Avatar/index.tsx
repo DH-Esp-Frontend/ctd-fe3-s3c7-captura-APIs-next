@@ -1,15 +1,17 @@
+import Image from 'next/image'
 import React, { FC } from 'react'
-import { DBStudent } from '../../pages/students'
+import { Student } from '../../pages/students'
 
 
 type Props = {
-    student: DBStudent
+    student: Student
 }
 
 const Avatar: FC<Props> = ({student}) => {
   return (
     <div style={{margin: "30px"}} >
-        <h2>{student.email}</h2>
+        <h2>{student.name}</h2>
+        <Image src={student.image} alt="profile" height={100} width={100}  />
     </div>
   )
 }
