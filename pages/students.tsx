@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { InferGetStaticPropsType } from 'next'
+import { InferGetServerSidePropsType } from 'next'
 import Avatar from '../components/Avatar'
 import Navbar from '../components/Navbar'
 
@@ -11,7 +11,7 @@ export type Student = {
   id: string
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     const res = await fetch("http://localhost:3000/api/students")
     console.log(res);
     const students: Student[]= await res.json()
@@ -20,7 +20,7 @@ export const getStaticProps = async () => {
     }
   }
   
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 const Students = ({students}: Props) => {
  
   return (

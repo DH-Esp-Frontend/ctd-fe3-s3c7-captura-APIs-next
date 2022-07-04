@@ -13,8 +13,7 @@ export function  middleware(req: NextRequest){
         if(cookie !== "Profesor"){
             return NextResponse.redirect("http://localhost:3000/home")
         }
-        return NextResponse.next()
     }
-    
+    return NextResponse.next()
 
 }
