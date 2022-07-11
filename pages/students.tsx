@@ -14,9 +14,7 @@ export const getServerSideProps = async () => {
   }
   
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>
-
 const Students = ({students}: Props) => {
- //...
   return (
     <>
       <Navbar/>
