@@ -21,15 +21,15 @@ export default function Content() {
             fontWeight={600}
             fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
             lineHeight={'110%'}>
-            Meeting scheduling{' '}
+            Creamos el futuro ataves {' '}
             <Text as={'span'} color={'orange.400'}>
-              made easy
+            de la educacion
             </Text>
           </Heading>
           <Text color={'gray.500'} maxW={'3xl'}>
-            Never miss a meeting. Never be late for one too. Keep track of your
-            meetings and receive smart reminders in appropriate times. Read your
-            smart “Daily Agenda” every morning.
+            Never miss a chance. Never be late for one too. Keep track of your
+            skills and receive smart reminders in appropriate times. Read your
+            smart “Daily Update” every morning.
           </Text>
           <Stack spacing={6} direction={'row'}>
             <Button

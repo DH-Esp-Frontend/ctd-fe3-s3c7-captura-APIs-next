@@ -9,7 +9,6 @@ export type Student = {
 const handler = async (req: NextApiRequest, res: NextApiResponse<Student[]>) => {
   const response = await fetch("https://62b3a9264f851f87f45dfb80.mockapi.io/api/example/data")
   const students: Student[] = await response.json()
-  console.log(students)
   res.status(200).json(students) 
 }
 
