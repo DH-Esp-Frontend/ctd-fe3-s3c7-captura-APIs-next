@@ -17,7 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(403).send({message: "Error"})
   }
 
-    res.setHeader("set-cookie", `Role=${findUser.role}; path=/; samesite=lax; httponly;`)
+    res.setHeader("set-cookie", `Access=true; path=/; samesite=lax; httponly;`)
     return res.status(200).send({message: "Login successfully"})
 }
 

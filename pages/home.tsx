@@ -2,15 +2,13 @@ import React from 'react'
 import Content from '../components/Content'
 import Navbar from '../components/Navbar'
 
-
-
-const home = () => {
+const Home = () => {
   return (
     <div>
-        <Navbar/>
+        <Navbar />
         <Content />
     </div>
   )
 }
 
-export default home
+export default Home

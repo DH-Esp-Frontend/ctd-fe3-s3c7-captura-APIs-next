@@ -1,27 +1,43 @@
-import Link from 'next/link'
-import React from 'react'
+import {
+  Box,
+  Flex,
+  Avatar,
+  HStack,
+  Link,
+  useColorModeValue,
+} from '@chakra-ui/react';
+import NextLink from 'next/link'
 
-const Navbar = () => {
+
+
+export default function Navbar() {
+
   return (
-    <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
-        <div className="container-fluid">
-            <a className="navbar-brand">DH</a>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                 <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarColor01">
-                <ul className="navbar-nav me-auto">
-                    <li className="nav-item">
-                    <Link href="/home"><a className="nav-link">Home</a></Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link href="/students"><a className="nav-link">Students</a></Link>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-  )
-}
+    <>
+      <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
+        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+          <HStack spacing={8} alignItems={'center'}>
+            <HStack
+              as={'nav'}
+              spacing={4}
+              display={{ base: 'none', md: 'flex' }}>
+               <NextLink href='/home' passHref>
+                  <Link href="">Home</Link>
+                </NextLink>
+                <NextLink href='/students' passHref>
+                  <Link href="">Students</Link>
+                </NextLink>
+            </HStack>
+          </HStack>
+          <Flex alignItems={'center'}>
+              <Avatar
+                size={'sm'}
+                cursor="pointer"
+              />
+          </Flex>
+        </Flex>
+      </Box>
 
-export default Navbar
+    </>
+  );
+}

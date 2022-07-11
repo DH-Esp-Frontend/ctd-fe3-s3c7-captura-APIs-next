@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { InferGetStaticPropsType } from 'next'
-import Avatar from '../components/Avatar'
+import { InferGetServerSidePropsType } from 'next'
 import Navbar from '../components/Navbar'
+import { Card } from '../components/Cards'
+import { Student } from './api/quotes'
+import { Flex } from '@chakra-ui/react'
 
 
-
-export type Student = {
-  name: string,
-  image: string,
-  id: string
-}
-
-export const getStaticProps = async () => {
-    const res = await fetch("http://localhost:3000/api/students")
+export const getServerSideProps = async () => {
+    const res = await fetch("http://localhost:3000/api/quotes")
     console.log(res);
     const students: Student[]= await res.json()
     return { 
@@ -20,15 +14,21 @@ export const getStaticProps = async () => {
     }
   }
   
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = InferGetServerSidePropsType<typeof getServerSideProps>
+
 const Students = ({students}: Props) => {
  
   return (
     <>
       <Navbar/>
-      <section style={{display: "flex", width: "1000px", flexWrap: "wrap",  margin:"0 auto"}}>
-          {students?.map(data => <Avatar student={data} key={data.id} />)}
-      </section>
+      <Flex
+      textAlign={'center'}
+      pt={10}
+      justifyContent={'center'}
+      direction={'column'}
+      width={'full'}>
+          {students?.map(data => <Card student={data} key={data.id} />)}
+      </Flex>
     </>
   )
 }

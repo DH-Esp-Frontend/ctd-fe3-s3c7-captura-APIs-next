@@ -1,6 +1,19 @@
-import Link from 'next/link'
+import {
+  Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Input,
+  Checkbox,
+  Stack,
+  Link,
+  Button,
+  Heading,
+  Text,
+  useColorModeValue,
+} from '@chakra-ui/react';
 import {useRouter} from 'next/router'
-import React, { ChangeEvent, FormEvent, MouseEvent, useState } from 'react'
+import React, { ChangeEvent, FormEvent, FormEventHandler, MouseEvent, useState } from 'react'
 
 const Login = () => {
     const [user, setUser] = useState({email: "", password: ""})
@@ -12,9 +25,10 @@ const Login = () => {
         ...prevState,
         [name]: value
    }))
+   console.log(value);
   }
 
-  const handleSubmit =  async (e: MouseEvent<HTMLElement>)=>{
+  const handleSubmit =  async ()=>{
     const res = await fetch("http://localhost:3000/api/login", 
     {method: "POST", body: JSON.stringify(user), headers: {
       'Content-Type': 'application/json'
@@ -26,23 +40,40 @@ const Login = () => {
 
 
   return (
-    <div>
-        <div className="form-group" style={{width: "500px", margin: "8rem auto"}}>
-          <label className="form-label mt-4">Log in</label>
-          <div className="form-floating mb-3">
-            <input name='email' onChange={handleChange} value={user.email} type="email" className="form-control" id="floatingInput" placeholder="name@example.com"/>
-            <label >Email address</label>
-          </div>
-          <div className="form-floating">
-            <input name='password' onChange={handleChange} value={user.password} type="password" className="form-control" id="floatingPassword" placeholder="Password"/>
-            <label >Password</label>
-          </div>
-          <div className="d-grid gap-2" style={{margin: "1rem 0"}}>
-           <button className="btn btn-lg btn-primary" onClick={handleSubmit}>Ingresar</button>
-          </div>
-       </div>
-    </div>
-  )
+      <Flex
+        minH={'100vh'}
+        align={'center'}
+        justify={'center'}
+        bg={useColorModeValue('gray.50', 'gray.800')}>
+      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+        <Stack align={'center'}>
+          <Heading fontSize={'4xl'}>Sign in to your account</Heading>
+          <Text fontSize={'lg'} color={'gray.600'}>
+            to enjoy all of our <Link color={'orange.400'}>experience</Link> ✌️
+          </Text>
+        </Stack>
+        <Box
+          rounded={'lg'}
+          bg={useColorModeValue('white', 'gray.700')}
+          boxShadow={'lg'}
+          p={8}>
+          <Stack spacing={4}>
+              <FormLabel>Email address</FormLabel>
+              <Input type="email" onChange={handleChange} name="email"/>
+              <FormLabel>Password</FormLabel>
+              <Input type="password" onChange={handleChange} name="password" />
+              <Button
+                onClick={handleSubmit}
+                type="submit"
+                bg={'orange.400'}
+                color={'white'}>
+                Sign in
+              </Button>
+          </Stack>
+        </Box>
+      </Stack>
+    </Flex>
+);
 }
 
 export default Login  
